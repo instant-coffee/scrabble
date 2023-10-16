@@ -100,3 +100,8 @@ button:focus-visible {
 .empty {
   background-color: white;
 }
+
+.candidate {
+  background-color:  rgb(0, 64, 230);
+  color: white;
+}

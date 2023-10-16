@@ -2,7 +2,7 @@
 export type BoardCell = string | null
 
 export interface Candidate {
-    letters: string
+    letter: string
     row: number
     col: number
 }

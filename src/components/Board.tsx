@@ -22,21 +22,30 @@ const Board: React.FC<BoardProps> = ({level}) => {
   const board = data?.board || []
   const candidate = data?.candidate || []
 
-  const newBoard = board.map((row:[], rowIndex: number) =>
-    row.map((cell: BoardCell, colIndex: number) => {
-      const candidateCell = candidate.find((c: Candidate) => c.row === rowIndex && c.col === colIndex);
-      return candidateCell ? candidateCell.letter : cell;
-    })
-  );
+  const candidateMap: (string | null)[][] = Array.from({ length: board.length}, () => Array.from({ length: board[0].length}, () => null))
 
+  candidate.forEach((c: Candidate) => {
+    if (c.row < candidateMap.length && c.col < candidateMap[0].length) {
+        candidateMap[c.row][c.col] = c.letter
+    }
+ })
 
   return (
     <div className="board">
-      {newBoard.map((row: [], rowindex: number) => (
-        <div key={rowindex} className="board-row">
-          {row.map((letter, colIndex) => (
-            <MemoizedCell key={colIndex} letter={letter} />
-          ))}
+      {board.map((row: BoardCell[], rowIndex: number) => (
+        <div key={rowIndex} className="board-row">
+          {row.map((cell, colIndex) => {
+            const isCandidate = candidateMap[rowIndex][colIndex] !== null
+            const letter = isCandidate ? candidateMap[rowIndex][colIndex] : cell
+            return (
+
+                <MemoizedCell 
+                    key={colIndex} 
+                    letter={letter} 
+                    isCandidate={isCandidate} 
+                />
+            )
+            })}
         </div>
       ))}
     </div>
