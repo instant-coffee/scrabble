@@ -1,3 +1,10 @@
+
+<img width="707" alt="Screenshot 2023-10-16 at 1 20 59 PM" src="https://github.com/instant-coffee/scrabble/assets/10563896/6370956a-2476-4f21-9b3d-0042cf4e224a">
+
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
