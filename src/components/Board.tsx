@@ -10,7 +10,6 @@ interface BoardProps {
 
 const Board: React.FC<BoardProps> = ({level}) => {
   const {data, error, isLoading} = useQuery(['gameData', level], () => fetchGameData(level))
-  console.log("🚀 ~ file: Board.tsx:11 ~ Board ~ data:", data)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -21,7 +20,6 @@ const Board: React.FC<BoardProps> = ({level}) => {
   }
 
   const board = data?.board || []
-  console.log("🚀 ~ file: Board.tsx:25 ~ board:", board)
   const candidate = data?.candidate || []
 
   const newBoard = board.map((row:[], rowIndex: number) =>
